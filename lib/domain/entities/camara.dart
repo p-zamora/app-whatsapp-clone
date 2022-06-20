@@ -1,0 +1,4 @@
+class Camara {
+  
+  Camara();
+}

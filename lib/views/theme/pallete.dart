@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+const primaryColor    =  Color(0xFF075E54);
+const secundaryColor  =  Color(0xFF128C7E);
+const white           =  Colors.white;
+const black           =  Colors.black;
+const black26         =  Colors.black26;
+const black12         =  Colors.black12;
+const black38         =  Colors.black38;
+const indigo          =  Colors.indigo;
+const blueGrey        =  Colors.blueGrey;
+const grey            =  Colors.grey;
+const blue            =  Colors.blue;
+const pink            =  Colors.pink;
+const red             =  Colors.red;
+const purple          =  Colors.purple;
+const orange          =  Colors.orange;
+const teal            =  Colors.teal;
+const tealAccent      =  Colors.tealAccent;
+const backgroundChat  =  Color.fromARGB(255, 233, 235, 236);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const primaryColor    =  Color(0xFF075E54);
 const secundaryColor  =  Color(0xFF128C7E);
+const greenLigth      =  Color(0xffdcf8c6);
 const white           =  Colors.white;
 const black           =  Colors.black;
 const black26         =  Colors.black26;
@@ -17,4 +18,5 @@ const purple          =  Colors.purple;
 const orange          =  Colors.orange;
 const teal            =  Colors.teal;
 const tealAccent      =  Colors.tealAccent;
+const transparent     = Colors.transparent;
 const backgroundChat  =  Color.fromARGB(255, 233, 235, 236);

@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:app_clone_whatsapp/domain/entities/chat.dart';
 import 'package:app_clone_whatsapp/views/theme/pallete.dart';
+import 'package:app_clone_whatsapp/views/widgets/own_message_card_widget.dart';
+import 'package:app_clone_whatsapp/views/widgets/reply_message_card_widget.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatIndividualPage extends StatefulWidget {
   final Chat chatModel;
@@ -19,6 +22,7 @@ class _ChatIndividualPageState extends State<ChatIndividualPage> {
   final TextEditingController _controller = TextEditingController();
   bool emojiShowing = false;
   FocusNode focusNode = FocusNode();
+  late IO.Socket socket;
 
   _onEmojiSelected(Emoji emoji) {
     _controller
@@ -46,13 +50,22 @@ class _ChatIndividualPageState extends State<ChatIndividualPage> {
     });
   }
 
+  void connet(){
+    /* socket = IO.io(uri); */
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(''),
+        Image.asset(
+          'assets/whatsapp_background_default.png',
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
+        ),
         Scaffold(
-          backgroundColor: backgroundChat,
+          backgroundColor: transparent,
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(60),
             child: AppBar(
@@ -115,7 +128,8 @@ class _ChatIndividualPageState extends State<ChatIndividualPage> {
                           child: Text('Media, Links, and docs')),
                       const PopupMenuItem(
                           value: 'WhatsApp Web', child: Text('WhatsApp Web')),
-                      const PopupMenuItem(value: 'Search', child: Text('Search')),
+                      const PopupMenuItem(
+                          value: 'Search', child: Text('Search')),
                       const PopupMenuItem(
                           value: 'Mute Notifications',
                           child: Text('Mute Notifications')),
@@ -133,7 +147,30 @@ class _ChatIndividualPageState extends State<ChatIndividualPage> {
             child: WillPopScope(
               child: Stack(
                 children: [
-                  ListView(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height - 140,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: const [
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                        OwnMessageCard(),
+                        ReplyMessageCard(),
+                      ],
+                    ),
+                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Column(
@@ -181,15 +218,18 @@ class _ChatIndividualPageState extends State<ChatIndividualPage> {
                                                       builder: (builder) =>
                                                           bottomSheet());
                                                 },
-                                                icon: const Icon(Icons.attach_file,
+                                                icon: const Icon(
+                                                    Icons.attach_file,
                                                     color: primaryColor)),
                                             IconButton(
                                                 onPressed: () {},
-                                                icon: const Icon(Icons.camera_alt,
+                                                icon: const Icon(
+                                                    Icons.camera_alt,
                                                     color: primaryColor))
                                           ],
                                         ),
-                                        contentPadding: const EdgeInsets.all(5)),
+                                        contentPadding:
+                                            const EdgeInsets.all(5)),
                                   )),
                             ),
                             Padding(
